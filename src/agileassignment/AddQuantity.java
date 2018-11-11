@@ -12,6 +12,7 @@ package agileassignment;
 public class AddQuantity extends javax.swing.JFrame {
 
     /**
+     * //hihihi
      * Creates new form AddQuantity
      */
     public AddQuantity() {
