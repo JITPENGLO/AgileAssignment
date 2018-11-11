@@ -5,17 +5,21 @@
  */
 package agileassignment;
 
+import javax.swing.JOptionPane;
+import java.util.ArrayList;
+
 /**
  *
  * @author jitpe
  */
 public class AddOrder extends javax.swing.JFrame {
-
+    ArrayList arr = new ArrayList();
     /**
      * Creates new form AddOrder
      */
     public AddOrder() {
         initComponents();
+        
     }
 
     /**
@@ -40,6 +44,8 @@ public class AddOrder extends javax.swing.JFrame {
         jtfQuantity = new javax.swing.JTextField();
         jtfDate = new javax.swing.JTextField();
         jtfTime = new javax.swing.JTextField();
+        jbtConfirm = new javax.swing.JButton();
+        jtfCancel = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
@@ -80,7 +86,7 @@ public class AddOrder extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Byte.class
+                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Byte.class
             };
             boolean[] canEdit = new boolean [] {
                 false, true, true, true
@@ -125,36 +131,59 @@ public class AddOrder extends javax.swing.JFrame {
 
         jtfTime.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
 
+        jbtConfirm.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        jbtConfirm.setText("Confirm");
+        jbtConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtConfirmActionPerformed(evt);
+            }
+        });
+
+        jtfCancel.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        jtfCancel.setText("Cancel");
+        jtfCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfCancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtfID)
-                            .addComponent(jtfQuantity)
+                        .addComponent(jtfID))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jbtConfirm)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jtfCancel))
                             .addComponent(jtfDate)
-                            .addComponent(jtfTime, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)))))
+                            .addComponent(jtfTime)
+                            .addComponent(jtfQuantity, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addGap(160, 160, 160))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(2, 2, 2)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -166,7 +195,11 @@ public class AddOrder extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jtfTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtConfirm)
+                    .addComponent(jtfCancel))
+                .addGap(4, 4, 4))
         );
 
         jComboBox1.setEditable(true);
@@ -186,24 +219,26 @@ public class AddOrder extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox1))
-                .addGap(0, 0, 0)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -216,6 +251,52 @@ public class AddOrder extends javax.swing.JFrame {
     private void jtfIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfIDActionPerformed
+
+    private void jbtConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtConfirmActionPerformed
+        // TODO add your handling code here:
+        if(jtfID.getText().equals("") && jtfQuantity.getText().equals("") && jtfDate.getText().equals("") && jtfTime.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "The below messages cannot be empty!\n - ID\n - Quantity\n - Date\n - Time", "ERROR!", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(!jtfID.getText().equals("") && jtfQuantity.getText().equals("") && jtfDate.getText().equals("") && jtfTime.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "The below messages cannot be empty!\n - Quantity\n - Date\n - Time", "ERROR!", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(jtfID.getText().equals("") && !jtfQuantity.getText().equals("") && jtfDate.getText().equals("") && jtfTime.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "The below messages cannot be empty!\n - ID\n - Date\n - Time", "ERROR!", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(jtfID.getText().equals("") && jtfQuantity.getText().equals("") && !jtfDate.getText().equals("") && jtfTime.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "The below messages cannot be empty!\n - ID\n - Quantity\n - Time", "ERROR!", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(jtfID.getText().equals("") && jtfQuantity.getText().equals("") && jtfDate.getText().equals("") && !jtfTime.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "The below messages cannot be empty!\n - ID\n - Quantity\n - Date", "ERROR!", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(!jtfID.getText().equals("") && !jtfQuantity.getText().equals("") && jtfDate.getText().equals("") && jtfTime.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "The below messages cannot be empty!\n - Date\n - Time", "ERROR!", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(!jtfID.getText().equals("") && jtfQuantity.getText().equals("") && !jtfDate.getText().equals("") && jtfTime.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "The below messages cannot be empty!\n - Quantity\n - Time", "ERROR!", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(!jtfID.getText().equals("") && jtfQuantity.getText().equals("") && jtfDate.getText().equals("") && !jtfTime.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "The below messages cannot be empty!\n - Quantity\n - Date", "ERROR!", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(!jtfID.getText().equals("") && !jtfQuantity.getText().equals("") && !jtfDate.getText().equals("") && jtfTime.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "The below messages cannot be empty!\n - Time", "ERROR!", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(!jtfID.getText().equals("") && !jtfQuantity.getText().equals("") && jtfDate.getText().equals("") && !jtfTime.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "The below messages cannot be empty!\n - Date", "ERROR!", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Order success!", "SUCCESS!", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jbtConfirmActionPerformed
+
+    private void jtfCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCancelActionPerformed
+        // TODO add your handling code here:
+        jtfID.setText("");
+        jtfQuantity.setText("");
+        jtfDate.setText("");
+        jtfTime.setText("");
+        jtfID.requestFocus();
+    }//GEN-LAST:event_jtfCancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,6 +345,8 @@ public class AddOrder extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton jbtConfirm;
+    private javax.swing.JButton jtfCancel;
     private javax.swing.JTextField jtfDate;
     private javax.swing.JTextField jtfID;
     private javax.swing.JTextField jtfQuantity;
