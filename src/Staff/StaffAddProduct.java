@@ -5,6 +5,8 @@
  */
 package Staff;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ASUS
@@ -55,6 +57,8 @@ public class StaffAddProduct extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
+        lblCatog = new javax.swing.JLabel();
+        jcbProductType = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbProduct = new javax.swing.JTable();
@@ -165,6 +169,11 @@ public class StaffAddProduct extends javax.swing.JFrame {
 
         jbtAdd.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jbtAdd.setText("Add Product");
+        jbtAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtAddActionPerformed(evt);
+            }
+        });
 
         lblImage.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblImage.setText("Product Image :");
@@ -186,57 +195,74 @@ public class StaffAddProduct extends javax.swing.JFrame {
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
 
+        lblCatog.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblCatog.setText("Product Type :");
+
+        jcbProductType.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jcbProductType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fresh Flowers", "Bouquets", "Floral Arrangements" }));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lblProductName)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblProductID)
-                        .addComponent(lblStaffID)
-                        .addComponent(jtfStaffID)
-                        .addComponent(jSeparator1)
-                        .addComponent(jtfProductID, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jtfProductName))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblQuan)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jtfQuan, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblPrice)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                                .addComponent(jtfRM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 0, 0)
-                                                .addComponent(jtfPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jSeparator7)
-                                        .addComponent(lblDesc, javax.swing.GroupLayout.Alignment.LEADING)))
-                                .addGap(32, 32, 32))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(66, 66, 66)
-                                .addComponent(jbtAdd))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfImage, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblImage, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1)))
-                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(129, 129, 129))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSeparator3)
-                .addGap(416, 416, 416))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblProductName)
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblProductID)
+                                .addComponent(lblStaffID)
+                                .addComponent(jtfStaffID)
+                                .addComponent(jSeparator1)
+                                .addComponent(jtfProductID, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtfProductName))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(118, 118, 118))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(66, 66, 66)
+                                        .addComponent(jbtAdd))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(lblQuan)
+                                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                            .addComponent(jtfQuan, javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(lblPrice)
+                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                                                    .addComponent(jtfRM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                    .addGap(0, 0, 0)
+                                                                    .addComponent(jtfPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                        .addComponent(lblDesc))
+                                                    .addGap(32, 32, 32))
+                                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                        .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jtfImage, javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(lblImage, javax.swing.GroupLayout.Alignment.LEADING))
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addComponent(jButton1)))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jSeparator3)
+                                                .addGap(127, 127, 127)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(129, 129, 129))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCatog)
+                            .addComponent(jcbProductType, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,13 +285,17 @@ public class StaffAddProduct extends javax.swing.JFrame {
                 .addComponent(jtfProductName, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(203, 203, 203)
+                        .addGap(209, 209, 209)
                         .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(153, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCatog)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jcbProductType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                         .addComponent(lblDesc)
                         .addGap(0, 0, 0)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -290,7 +320,7 @@ public class StaffAddProduct extends javax.swing.JFrame {
                             .addComponent(jButton1))
                         .addGap(0, 0, 0)
                         .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addGap(32, 32, 32)
                         .addComponent(jbtAdd)
                         .addContainerGap())))
         );
@@ -365,6 +395,28 @@ public class StaffAddProduct extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfQuanActionPerformed
 
+    private void jbtAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAddActionPerformed
+       
+        if(jtfProductName.getText().equals("") && jtaDesc.getText().equals("") && jtfPrice.getText().equals("") && jtfQuan.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"The below field(s) can't be empty \n"
+                    + "Product Name \n Product Description \n Price \n Quantity \n","Error",JOptionPane.ERROR_MESSAGE);
+        }else if(!jtfProductName.getText().equals("") && jtaDesc.getText().equals("") && jtfPrice.getText().equals("") && jtfQuan.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"The below field(s) can't be empty \n"
+                    + "Product Description \n Price \n Quantity \n","Error",JOptionPane.ERROR_MESSAGE);
+        }else if(!jtfProductName.getText().equals("") && jtaDesc.getText().equals("") && jtfPrice.toString()=="" && jtfQuan.toString()==""){
+            JOptionPane.showMessageDialog(null,"The below field(s) can't be empty \n"
+                    + "Price \n Quantity \n","Error",JOptionPane.ERROR_MESSAGE);
+        }else if(jtfProductName.getText().equals("") && jtaDesc.getText().equals("") && jtfPrice.toString().equals("") && jtfQuan.toString()==""){
+            JOptionPane.showMessageDialog(null,"The below field(s) can't be empty \n"
+                    + "Quantity \n","Error",JOptionPane.ERROR_MESSAGE);
+        }else if(jtfProductName.getText().equals("") && jtaDesc.getText().equals("") && jtfPrice.toString().equals("") && jtfQuan.toString().equals("")){
+            
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Product Add successfully", "Information", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jbtAddActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -416,6 +468,7 @@ public class StaffAddProduct extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JButton jbtAdd;
+    private javax.swing.JComboBox<String> jcbProductType;
     private javax.swing.JTextArea jtaDesc;
     private javax.swing.JTable jtbProduct;
     private javax.swing.JTextField jtfImage;
@@ -425,6 +478,7 @@ public class StaffAddProduct extends javax.swing.JFrame {
     private javax.swing.JTextField jtfQuan;
     private javax.swing.JTextField jtfRM;
     private javax.swing.JTextField jtfStaffID;
+    private javax.swing.JLabel lblCatog;
     private javax.swing.JLabel lblDesc;
     private javax.swing.JLabel lblImage;
     private javax.swing.JLabel lblPrice;
