@@ -7,21 +7,74 @@ package agileassignment;
 
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author jitpe
  */
 public class AddOrder extends javax.swing.JFrame {
-    ArrayList arr = new ArrayList();
     /**
      * Creates new form AddOrder
      */
     public AddOrder() {
         initComponents();
-        
+        addRowToTable();
     }
 
+    public class Order{
+        public String id;
+        public String name;
+        public String desc;
+        public double price;
+        public String type;
+        public String img;
+    
+        public Order(String id, String name, String desc, double price, String type, String img){
+            this.id = id;
+            this.name = name;
+            this.desc = desc;
+            this.price = price;
+            this.type = type;
+            this.img = img;
+        }
+    }
+    
+    public ArrayList OrderList(){
+        ArrayList<Order> order = new ArrayList<>();
+        Order o1 = new Order("FR0000", "Munkit", "This flower is very pork guy", 6.00, "bouquet", "flower.jpg");
+        Order o2 = new Order("FA0001", "Cheeben", "This flower i also dont know how to describe jor", 30.00, "alacart", "flower.jpg");
+        Order o3 = new Order("FB0002", "Shypinn", "What are you NONG SA LEH?", 10.00, "set", "flower.jpg");
+        Order o4 = new Order("FK0003", "Kinlit", "Walao, this flower", 5.00, "bouquet", "flower.jpg");
+        Order o5 = new Order("FB0004", "Dongzhuo", "Sad", 8.00, "set", "flower.jpg");
+        Order o6 = new Order("FA0005", "JackBoon", "Nothing gonna change my love for u", 99.99, "alacart", "flower.jpg");
+        
+        order.add(o1);
+        order.add(o2);
+        order.add(o3);
+        order.add(o4);
+        order.add(o5);
+        order.add(o6);
+        return order;
+    }
+    
+    public void addRowToTable(){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        ArrayList<Order> order = OrderList();
+        Object rowData[] = new Object[6];
+        
+        for(int i=0; i<order.size(); i++){
+            rowData[0] = order.get(i).id;
+            rowData[1] = order.get(i).name;
+            rowData[2] = order.get(i).desc;
+            rowData[3] = order.get(i).price;
+            rowData[4] = order.get(i).type;
+            rowData[5] = order.get(i).img;
+            
+            model.addRow(rowData);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,14 +135,14 @@ public class AddOrder extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Description", "Price(RM)", "Picture"
+                "ID", "Name", "Description", "Price(RM)", "Type", "Picture"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Byte.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.Byte.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, true
+                false, true, true, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -178,7 +231,7 @@ public class AddOrder extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
