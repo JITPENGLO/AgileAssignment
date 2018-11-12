@@ -30,7 +30,7 @@ public class ViewPickUp extends javax.swing.JFrame {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         jtfDate.setText(dateFormat.format(date));
     }
-    
+    //
     public class PickUp{
         public String id;
         public String name;
