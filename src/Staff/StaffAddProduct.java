@@ -97,6 +97,8 @@ public class StaffAddProduct extends javax.swing.JFrame {
         jtfStaffID.setEditable(false);
         jtfStaffID.setBackground(new java.awt.Color(153, 153, 255));
         jtfStaffID.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jtfStaffID.setForeground(new java.awt.Color(255, 255, 255));
+        jtfStaffID.setText("S1001");
         jtfStaffID.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
@@ -108,6 +110,8 @@ public class StaffAddProduct extends javax.swing.JFrame {
         jtfProductID.setEditable(false);
         jtfProductID.setBackground(new java.awt.Color(153, 153, 255));
         jtfProductID.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jtfProductID.setForeground(new java.awt.Color(255, 255, 255));
+        jtfProductID.setText("P1010");
         jtfProductID.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jtfProductID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,7 +299,7 @@ public class StaffAddProduct extends javax.swing.JFrame {
                         .addComponent(lblCatog)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jcbProductType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblDesc)
                         .addGap(0, 0, 0)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -333,15 +337,24 @@ public class StaffAddProduct extends javax.swing.JFrame {
 
         jtbProduct.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {"P1001", "Sun Flower", "Fresh Flowers", "Collect on current day morning",  new Double(50.0), "none"},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Product ID", "Product Name", "Product Type", "Product Desc", "Price(RM)", "Image"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jtbProduct);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -349,16 +362,16 @@ public class StaffAddProduct extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1)
+                .addGap(223, 223, 223))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -403,14 +416,48 @@ public class StaffAddProduct extends javax.swing.JFrame {
         }else if(!jtfProductName.getText().equals("") && jtaDesc.getText().equals("") && jtfPrice.getText().equals("") && jtfQuan.getText().equals("")){
             JOptionPane.showMessageDialog(null,"The below field(s) can't be empty \n"
                     + "Product Description \n Price \n Quantity \n","Error",JOptionPane.ERROR_MESSAGE);
-        }else if(!jtfProductName.getText().equals("") && jtaDesc.getText().equals("") && jtfPrice.toString()=="" && jtfQuan.toString()==""){
+        }else if(!jtfProductName.getText().equals("") && !jtaDesc.getText().equals("") && jtfPrice.toString()=="" && jtfQuan.toString()==""){
             JOptionPane.showMessageDialog(null,"The below field(s) can't be empty \n"
                     + "Price \n Quantity \n","Error",JOptionPane.ERROR_MESSAGE);
-        }else if(jtfProductName.getText().equals("") && jtaDesc.getText().equals("") && jtfPrice.toString().equals("") && jtfQuan.toString()==""){
+        }else if(!jtfProductName.getText().equals("") && !jtaDesc.getText().equals("") && !jtfPrice.toString().equals("") && jtfQuan.toString()==""){
             JOptionPane.showMessageDialog(null,"The below field(s) can't be empty \n"
                     + "Quantity \n","Error",JOptionPane.ERROR_MESSAGE);
-        }else if(jtfProductName.getText().equals("") && jtaDesc.getText().equals("") && jtfPrice.toString().equals("") && jtfQuan.toString().equals("")){
-            
+        }else if(jtfProductName.getText().equals("") && jtaDesc.getText().equals("") && !jtfPrice.toString().equals("") && !jtfQuan.toString().equals("")){
+            JOptionPane.showMessageDialog(null,"The below field(s) can't be empty \n"
+                    + "Product Name \n Product Description","Error",JOptionPane.ERROR_MESSAGE);
+        }else if(jtfProductName.getText().equals("") && !jtaDesc.getText().equals("") && jtfPrice.getText().equals("") && !jtfQuan.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"The below field(s) can't be empty \n"
+                    + "Product Name \nPrice ","Error",JOptionPane.ERROR_MESSAGE);
+        }else if(jtfProductName.getText().equals("") && !jtaDesc.getText().equals("") && !jtfPrice.getText().equals("") && jtfQuan.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"The below field(s) can't be empty \n"
+                    + "Product Name \n  Quantity \n","Error",JOptionPane.ERROR_MESSAGE);
+        }else if(!jtfProductName.getText().equals("") && jtaDesc.getText().equals("") && jtfPrice.getText().equals("") && !jtfQuan.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"The below field(s) can't be empty \n"
+                    + "Product Description \n Price\n","Error",JOptionPane.ERROR_MESSAGE);
+        }else if(!jtfProductName.getText().equals("") && jtaDesc.getText().equals("") && !jtfPrice.getText().equals("") && jtfQuan.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"The below field(s) can't be empty \n"
+                    + "Product Description \nQuantity \n","Error",JOptionPane.ERROR_MESSAGE);
+        }else if(!jtfProductName.getText().equals("") && !jtaDesc.getText().equals("") && jtfPrice.getText().equals("") && jtfQuan.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"The below field(s) can't be empty \n"
+                    + "Price \n Quantity \n","Error",JOptionPane.ERROR_MESSAGE);
+        }else if(!jtfProductName.getText().equals("") && !jtaDesc.getText().equals("") && jtfPrice.getText().equals("") && !jtfQuan.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"The below field(s) can't be empty \n"
+                    + "Price\n","Error",JOptionPane.ERROR_MESSAGE);
+        }else if(!jtfProductName.getText().equals("") && jtaDesc.getText().equals("") && !jtfPrice.getText().equals("") && !jtfQuan.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"The below field(s) can't be empty \n"
+                    + "Product Description\n","Error",JOptionPane.ERROR_MESSAGE);
+        }else if(jtfProductName.getText().equals("") && !jtaDesc.getText().equals("") && !jtfPrice.getText().equals("") && !jtfQuan.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"The below field(s) can't be empty \n"
+                    + "Product Name\n","Error",JOptionPane.ERROR_MESSAGE);
+        }else if(jtfProductName.getText().equals("") && jtaDesc.getText().equals("") && !jtfPrice.getText().equals("") && jtfQuan.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"The below field(s) can't be empty \n"
+                    + "Product Name \n Product Description\n Quantity \n","Error",JOptionPane.ERROR_MESSAGE);
+        }else if(jtfProductName.getText().equals("") && !jtaDesc.getText().equals("") && jtfPrice.getText().equals("") && jtfQuan.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"The below field(s) can't be empty \n"
+                    + "Product Name \n Price \n Quantity \n","Error",JOptionPane.ERROR_MESSAGE);
+        }else if(jtfProductName.getText().equals("") && jtaDesc.getText().equals("") && jtfPrice.getText().equals("") && !jtfQuan.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"The below field(s) can't be empty \n"
+                    + "Product Name \n Product Description \n Price \n","Error",JOptionPane.ERROR_MESSAGE);
         }
         else{
             JOptionPane.showMessageDialog(null,"Product Add successfully", "Information", JOptionPane.INFORMATION_MESSAGE);
