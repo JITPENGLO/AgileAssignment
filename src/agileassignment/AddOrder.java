@@ -306,7 +306,13 @@ public class AddOrder extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "The below messages cannot be empty!\n - Date", "ERROR!", JOptionPane.ERROR_MESSAGE);
         }
         else{
-            JOptionPane.showMessageDialog(null, "Order success!", "SUCCESS!", JOptionPane.INFORMATION_MESSAGE);
+            if(jtfID.getText().equals("FR0000") || jtfID.getText().equals("FA0001") || jtfID.getText().equals("FB0002") || jtfID.getText().equals("FK0003")){
+                JOptionPane.showMessageDialog(null, "Order success!", "SUCCESS!", JOptionPane.INFORMATION_MESSAGE);
+                
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "ID not match", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jbtConfirmActionPerformed
 
