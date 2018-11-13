@@ -452,6 +452,16 @@ public ArrayList ProductList(){
                     + "Product Name \n Product Description \n Price \n","Error",JOptionPane.ERROR_MESSAGE);
         }
         else{
+            DefaultTableModel model = (DefaultTableModel)jtbProduct.getModel();
+            Object rowData[] = new Object[7];
+            rowData[0] = jtfProductID.getText();
+            rowData[1] = jtfProductName.getText();
+            rowData[2] = jcbProductType.getSelectedItem().toString();
+            rowData[3] = jtaDesc.getText();
+            rowData[4] = Double.parseDouble(jtfPrice.getText());
+            rowData[5] = jtfQuan.getText();
+            rowData[6] = "none";
+            model.addRow(rowData);
             JOptionPane.showMessageDialog(null,"Product Add successfully", "Information", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jbtAddActionPerformed
