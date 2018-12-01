@@ -41,7 +41,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f0" green="0" red="ff" type="rgb"/>
+          <Color blue="ff" green="99" red="ff" type="rgb"/>
         </Property>
       </Properties>
 
@@ -80,7 +80,7 @@
     <Container class="javax.swing.JPanel" name="jPanel2">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="f0" red="ff" type="rgb"/>
+          <Color blue="66" green="ff" red="ff" type="rgb"/>
         </Property>
       </Properties>
 
@@ -88,7 +88,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace pref="226" max="32767" attributes="0"/>
+                  <EmptySpace pref="224" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jlbTitle" min="-2" max="-2" attributes="0"/>
@@ -102,23 +102,6 @@
                                   <Component id="jScrollPane1" min="-2" pref="180" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jlbCorporateName" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jlbContact" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jlbCustomerName" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jlbCustomerID" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jlbConfirmPassword" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jtfCustomerID" max="32767" attributes="0"/>
-                                      <Component id="jtfCustomerName" max="32767" attributes="0"/>
-                                      <Component id="jtfContact" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jtfCorporateName" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jpfConfirmPass" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="jlbPassword" min="-2" pref="151" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jpfPass" max="32767" attributes="0"/>
@@ -128,8 +111,27 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jbtCancel" min="-2" pref="107" max="-2" attributes="0"/>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="jlblCompanyID" max="32767" attributes="0"/>
+                                      <Component id="jlbCorporateName" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jlbContact" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jlbCustomerName" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jlbCustomerID" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jlbConfirmPassword" alignment="0" pref="151" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jtfCustomerID" max="32767" attributes="0"/>
+                                      <Component id="jtfCustomerName" max="32767" attributes="0"/>
+                                      <Component id="jtfContact" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jtfCorporateName" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jpfConfirmPass" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jtfCompanyID" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="189" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -138,49 +140,54 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   <Component id="jlbTitle" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jlbCustomerID" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="jtfCustomerID" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jlbCustomerID" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jtfCustomerID" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jlbCustomerName" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="jtfCustomerName" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="jlbCustomerName" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jtfCustomerName" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jlbContact" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="jtfContact" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="jlbContact" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jtfContact" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jlbCorporateName" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="jtfCorporateName" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="jlblCompanyID" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jtfCompanyID" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jlbCorporateName" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jtfCorporateName" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane1" alignment="0" min="-2" pref="76" max="-2" attributes="0"/>
-                      <Component id="jlbCorporateAddress" alignment="0" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="jlbCorporateAddress" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jlbPassword" min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="jpfPass" max="32767" attributes="0"/>
+                      <Component id="jlbPassword" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jpfPass" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jlbConfirmPassword" pref="38" max="32767" attributes="0"/>
-                      <Component id="jpfConfirmPass" max="32767" attributes="0"/>
+                      <Component id="jlbConfirmPassword" max="32767" attributes="0"/>
+                      <Component id="jpfConfirmPass" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jbtRegister" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                       <Component id="jbtCancel" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="36" max="32767" attributes="0"/>
+                  <EmptySpace pref="53" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -316,6 +323,16 @@
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlblCompanyID">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Company ID:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtfCompanyID">
         </Component>
       </SubComponents>
     </Container>
