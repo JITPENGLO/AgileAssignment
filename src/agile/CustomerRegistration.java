@@ -52,7 +52,7 @@ public class CustomerRegistration extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 0, 240));
+        jPanel1.setBackground(new java.awt.Color(255, 153, 255));
 
         jlbCompanyName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jlbCompanyName.setText("Fiore Flowershop");
@@ -74,7 +74,7 @@ public class CustomerRegistration extends javax.swing.JFrame {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 240, 0));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 102));
 
         jlbTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jlbTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
