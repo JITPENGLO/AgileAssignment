@@ -6,6 +6,7 @@
 package Staff;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -98,17 +99,17 @@ public void StoreTable(){
         jSeparator5 = new javax.swing.JSeparator();
         jbtDelete = new javax.swing.JButton();
         lblImage = new javax.swing.JLabel();
-        jtfImage = new javax.swing.JTextField();
         lblCatog = new javax.swing.JLabel();
-        jcbProductType = new javax.swing.JComboBox<>();
         jbtRetrieve = new javax.swing.JButton();
+        jtfProductType = new javax.swing.JTextField();
+        Image = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbProduct = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 0, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 153, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Fiore Flowershop");
@@ -135,17 +136,17 @@ public void StoreTable(){
         lblStaffID.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblStaffID.setText("Staff ID :");
 
-        jtfStaffID.setBackground(new java.awt.Color(255, 255, 255));
+        jtfStaffID.setEditable(false);
         jtfStaffID.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jtfStaffID.setForeground(new java.awt.Color(102, 102, 102));
+        jtfStaffID.setText("S1001");
         jtfStaffID.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         lblProductID.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblProductID.setText("Product ID :");
 
-        jtfProductID.setEditable(false);
         jtfProductID.setBackground(new java.awt.Color(255, 255, 255));
         jtfProductID.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jtfProductID.setForeground(new java.awt.Color(102, 102, 102));
         jtfProductID.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jtfProductID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,6 +159,7 @@ public void StoreTable(){
 
         jtfProductName.setEditable(false);
         jtfProductName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jtfProductName.setForeground(new java.awt.Color(102, 102, 102));
         jtfProductName.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         lblPrice.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -165,6 +167,7 @@ public void StoreTable(){
 
         jtfPrice.setEditable(false);
         jtfPrice.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jtfPrice.setForeground(new java.awt.Color(102, 102, 102));
         jtfPrice.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jtfPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,11 +188,14 @@ public void StoreTable(){
 
         jtaDesc.setEditable(false);
         jtaDesc.setColumns(20);
+        jtaDesc.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jtaDesc.setForeground(new java.awt.Color(102, 102, 102));
         jtaDesc.setRows(5);
         jScrollPane2.setViewportView(jtaDesc);
 
         jtfQuan.setEditable(false);
         jtfQuan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jtfQuan.setForeground(new java.awt.Color(102, 102, 102));
         jtfQuan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jtfQuan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,20 +216,20 @@ public void StoreTable(){
         lblImage.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblImage.setText("Product Image :");
 
-        jtfImage.setEditable(false);
-        jtfImage.setBackground(new java.awt.Color(255, 255, 255));
-        jtfImage.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jtfImage.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
         lblCatog.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblCatog.setText("Product Type :");
 
-        jcbProductType.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jcbProductType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fresh Flowers", "Bouquets", "Floral Arrangements" }));
-        jcbProductType.setToolTipText("");
-
         jbtRetrieve.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jbtRetrieve.setText("Retrieve");
+        jbtRetrieve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtRetrieveActionPerformed(evt);
+            }
+        });
+
+        jtfProductType.setEditable(false);
+        jtfProductType.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jtfProductType.setForeground(new java.awt.Color(102, 102, 102));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -241,7 +247,7 @@ public void StoreTable(){
                                     .addComponent(lblStaffID)
                                     .addComponent(jtfStaffID)
                                     .addComponent(jtfProductID, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(39, 39, 39)
+                                .addGap(43, 43, 43)
                                 .addComponent(jbtRetrieve))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,9 +260,7 @@ public void StoreTable(){
                                                 .addComponent(jtfQuan, javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(lblPrice)))
                                         .addGap(32, 32, 32))
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jtfImage, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblImage, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(lblImage)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jtfRM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, 0)
@@ -264,14 +268,21 @@ public void StoreTable(){
                                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(129, 129, 129))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jtfProductName, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCatog, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcbProductType, javax.swing.GroupLayout.Alignment.LEADING, 0, 202, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jtfProductName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCatog, javax.swing.GroupLayout.Alignment.LEADING))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addComponent(jbtDelete)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(jbtDelete))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jtfProductType, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Image, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -280,14 +291,14 @@ public void StoreTable(){
                 .addContainerGap()
                 .addComponent(lblStaffID)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtRetrieve))
-                .addGap(13, 13, 13)
+                .addComponent(jtfStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
                 .addComponent(lblProductID)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtfProductID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfProductID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtRetrieve))
+                .addGap(6, 6, 6)
                 .addComponent(lblProductName)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -299,9 +310,9 @@ public void StoreTable(){
                         .addComponent(jtfProductName, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(17, 17, 17)
                         .addComponent(lblCatog)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcbProductType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jtfProductType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblDesc)
                         .addGap(0, 0, 0)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -317,13 +328,13 @@ public void StoreTable(){
                         .addGap(18, 18, 18)
                         .addComponent(lblImage)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Image, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
                         .addComponent(jbtDelete)
                         .addGap(42, 42, 42))))
         );
 
-        jPanel3.setBackground(new java.awt.Color(255, 204, 0));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 102));
         jPanel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jtbProduct.setModel(new javax.swing.table.DefaultTableModel(
@@ -396,9 +407,53 @@ public void StoreTable(){
     }//GEN-LAST:event_jtfQuanActionPerformed
 
     private void jbtDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtDeleteActionPerformed
-
+        DefaultTableModel model = (DefaultTableModel) jtbProduct.getModel();
+        ArrayList<StaffDeleteProduct.Product> list = ProductList();
+        
+        int yes = JOptionPane.showConfirmDialog(null, "Do you want to delete the current product?", "Delete Product", JOptionPane.YES_NO_OPTION);
+        if(yes == JOptionPane.YES_OPTION){
+            for(int i =0;i< list.size();i++){
+                if(jtfProductID.getText().equals(list.get(i).id.toString())){
+            
+                    model.removeRow(i);
+                    jtfProductID.setText("");
+                    jtfProductName.setText("");
+                    jtfProductType.setText("");
+                    jtaDesc.setText("");
+                    jtfPrice.setText("");
+                    jtfQuan.setText("");
+                }
+            }
+        }else if(yes == JOptionPane.NO_OPTION){
+            jtfProductID.setText("");
+            jtfProductName.setText("");
+            jtfProductType.setText("");
+            jtaDesc.setText("");
+            jtfPrice.setText("");
+            jtfQuan.setText("");
+        }
+        
         
     }//GEN-LAST:event_jbtDeleteActionPerformed
+
+    private void jbtRetrieveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtRetrieveActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jtbProduct.getModel();
+       ArrayList<StaffDeleteProduct.Product> list = ProductList();
+       
+        for(int i =0;i< list.size();i++){
+        if(jtfProductID.getText().equals(list.get(i).id.toString())){
+            double p = list.get(i).price;
+            jtfProductName.setText(list.get(i).name);
+            jtfProductType.setText(list.get(i).productType);
+            jtaDesc.setText(list.get(i).productDesc);
+            jtfPrice.setText(Double.toString(p));
+            jtfQuan.setText(String.valueOf(list.get(i).quantity));
+            
+            
+        }
+            }
+    }//GEN-LAST:event_jbtRetrieveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -436,6 +491,7 @@ public void StoreTable(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Image;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -445,13 +501,12 @@ public void StoreTable(){
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JButton jbtDelete;
     private javax.swing.JButton jbtRetrieve;
-    private javax.swing.JComboBox<String> jcbProductType;
     private javax.swing.JTextArea jtaDesc;
     private javax.swing.JTable jtbProduct;
-    private javax.swing.JTextField jtfImage;
     private javax.swing.JTextField jtfPrice;
     private javax.swing.JTextField jtfProductID;
     private javax.swing.JTextField jtfProductName;
+    private javax.swing.JTextField jtfProductType;
     private javax.swing.JTextField jtfQuan;
     private javax.swing.JTextField jtfRM;
     private javax.swing.JTextField jtfStaffID;
