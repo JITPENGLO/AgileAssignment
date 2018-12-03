@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class GenerateInvoice extends javax.swing.JFrame {
 
     double sum = 0;
+    
     /**
      * Creates new form GenerateInvoice
      */
@@ -83,6 +84,8 @@ public class GenerateInvoice extends javax.swing.JFrame {
         for(int i=0;i<list.size();i++){
             if(custID.equals(list.get(i).custID)){
                 Date orderDate = new SimpleDateFormat("dd/MM/yyyy").parse(list.get(i).orderDate);
+                
+                //orderDate compare the fromDate and toDate
                 if(orderDate.compareTo(fromDate) >= 0 && orderDate.compareTo(toDate) <= 0){
                     
                 totalPrice = list.get(i).quantity * list.get(i).productPrice;
