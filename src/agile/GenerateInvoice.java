@@ -21,6 +21,7 @@ public class GenerateInvoice extends javax.swing.JFrame {
      */
     public GenerateInvoice() {
         initComponents();
+        clearAll();
     }
 
     public class CustOrder{
@@ -111,7 +112,7 @@ public class GenerateInvoice extends javax.swing.JFrame {
         jlblAddress = new javax.swing.JLabel();
         jlblInvoice = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jtaAddress = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtOrder = new javax.swing.JTable();
         jlblTotalAmount = new javax.swing.JLabel();
@@ -174,10 +175,10 @@ public class GenerateInvoice extends javax.swing.JFrame {
 
         jScrollPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jtaAddress.setColumns(20);
+        jtaAddress.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jtaAddress.setRows(5);
+        jScrollPane1.setViewportView(jtaAddress);
 
         jtOrder.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -291,9 +292,9 @@ public class GenerateInvoice extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlblTotalAmount)
-                    .addComponent(jtfTotalAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtfTotalAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlblTotalAmount))
                 .addGap(18, 18, 18)
                 .addComponent(jbGenerate)
                 .addContainerGap(28, Short.MAX_VALUE))
@@ -320,13 +321,34 @@ public class GenerateInvoice extends javax.swing.JFrame {
     private void jcbCorporateCustIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCorporateCustIDActionPerformed
         // TODO add your handling code here:
         ShowTable(jcbCorporateCustID.getSelectedItem().toString());
+        setCustText(jcbCorporateCustID.getSelectedItem().toString());
     }//GEN-LAST:event_jcbCorporateCustIDActionPerformed
 
     private void jbGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerateActionPerformed
         // TODO add your handling code here:
+        clearAll();
         JOptionPane.showMessageDialog(null,"Success generate Invoice","Success", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jbGenerateActionPerformed
 
+    private void setCustText(String selectedCustID){
+        if(selectedCustID.equals("CR0001")){
+            jtfName.setText("Andrew Chong");
+            jtaAddress.setText("No 123,Jalan Klang,41300 Kuala Lumpur");
+        }
+        else if(selectedCustID.equals("CR0002")){
+            jtfName.setText("Leo Lo");
+            jtaAddress.setText("No 124,Jalan Klang,41300 Kuala Lumpur");
+        }
+    }
+    
+    private void clearAll(){
+        DefaultTableModel model = (DefaultTableModel)jtOrder.getModel();
+        model.setRowCount(0);
+        jtfTotalAmount.setText("");
+        jtfName.setText("");
+        jtaAddress.setText("");
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -367,7 +389,6 @@ public class GenerateInvoice extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton jbGenerate;
     private javax.swing.JComboBox<String> jcbCorporateCustID;
     private javax.swing.JComboBox<String> jcbMonth;
@@ -379,6 +400,7 @@ public class GenerateInvoice extends javax.swing.JFrame {
     private javax.swing.JLabel jlblMonth;
     private javax.swing.JLabel jlblTotalAmount;
     private javax.swing.JTable jtOrder;
+    private javax.swing.JTextArea jtaAddress;
     private javax.swing.JTextField jtfName;
     private javax.swing.JTextField jtfTotalAmount;
     // End of variables declaration//GEN-END:variables
