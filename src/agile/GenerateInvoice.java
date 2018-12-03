@@ -5,7 +5,9 @@
  */
 package agile;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -48,11 +50,11 @@ public class GenerateInvoice extends javax.swing.JFrame {
     public ArrayList ProductList(){
         ArrayList<CustOrder> list = new ArrayList<CustOrder>();
         CustOrder order1 = new CustOrder("OR0001","6/6/2018","CR0001","P1001","Rose",3,10.0);
-        CustOrder order2 = new CustOrder("OR0002","21/8/2018","CR0002","P1001","Rose",1,10.0);
-        CustOrder order3 = new CustOrder("OR0003","6/8/2018","CR0002","P1002","Sun Flowers",1,10.0);
+        CustOrder order2 = new CustOrder("OR0002","6/8/2018","CR0002","P1001","Rose",5,10.0);
+        CustOrder order3 = new CustOrder("OR0003","21/8/2018","CR0002","P1002","Sun Flowers",1,10.0);
         CustOrder order4 = new CustOrder("OR0004","8/9/2018","CR0001","P1001","Rose",1,10.0);
         CustOrder order5 = new CustOrder("OR0005","22/9/2018","CR0001","P1002","Sun Flowers",7,10.0);
-        CustOrder order6 = new CustOrder("OR0006","29/9/2018","CR0001","P1001","Rose",5,10.0);
+        CustOrder order6 = new CustOrder("OR0006","6/1/2019","CR0001","P1001","Rose",5,10.0);
         
         list.add(order1);
         list.add(order2);
@@ -64,21 +66,30 @@ public class GenerateInvoice extends javax.swing.JFrame {
     }
     
     public void ShowTable(String custID){
+        try{
         DefaultTableModel model = (DefaultTableModel)jtOrder.getModel();
         ArrayList<CustOrder> list = ProductList();
         Object rowData[] = new Object[7];
         double totalPrice = 0;
+        
+        String sFromDate = "7/" + selectedMonth() + "/2018";
+        String sToDate = "6/" + nextMonth();
+        Date fromDate = new SimpleDateFormat("dd/MM/yyyy").parse(sFromDate);
+        Date toDate = new SimpleDateFormat("dd/MM/yyyy").parse(sToDate);
         
         sum = 0;
         model.setRowCount(0);
         
         for(int i=0;i<list.size();i++){
             if(custID.equals(list.get(i).custID)){
+                Date orderDate = new SimpleDateFormat("dd/MM/yyyy").parse(list.get(i).orderDate);
+                if(orderDate.compareTo(fromDate) >= 0 && orderDate.compareTo(toDate) <= 0){
+                    
                 totalPrice = list.get(i).quantity * list.get(i).productPrice;
                 
                 rowData[0] = list.get(i).id;
                 rowData[1] = list.get(i).orderDate;
-                rowData[2] = list.get(2).productID;
+                rowData[2] = list.get(i).productID;
                 rowData[3] = list.get(i).productName;
                 rowData[4] = list.get(i).quantity;
                 rowData[5] = list.get(i).productPrice;
@@ -86,9 +97,14 @@ public class GenerateInvoice extends javax.swing.JFrame {
                 
                 sum += totalPrice;
                 model.addRow(rowData);
+                
+                }
             }
         }
         jtfTotalAmount.setText("RM" + String.format("%.2f", sum));
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null,"Date has problem","Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     /**
@@ -160,11 +176,17 @@ public class GenerateInvoice extends javax.swing.JFrame {
         });
 
         jcbMonth.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jcbMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        jcbMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
+        jcbMonth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMonthActionPerformed(evt);
+            }
+        });
 
         jlblCorporateCustName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jlblCorporateCustName.setText("Corporate Customer Name:");
 
+        jtfName.setEditable(false);
         jtfName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jlblAddress.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -175,6 +197,7 @@ public class GenerateInvoice extends javax.swing.JFrame {
 
         jScrollPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
+        jtaAddress.setEditable(false);
         jtaAddress.setColumns(20);
         jtaAddress.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jtaAddress.setRows(5);
@@ -330,6 +353,13 @@ public class GenerateInvoice extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,"Success generate Invoice","Success", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jbGenerateActionPerformed
 
+    private void jcbMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMonthActionPerformed
+        // TODO add your handling code here:
+        if(!jtfName.getText().equals("")){
+            ShowTable(jcbCorporateCustID.getSelectedItem().toString());
+        }
+    }//GEN-LAST:event_jcbMonthActionPerformed
+
     private void setCustText(String selectedCustID){
         if(selectedCustID.equals("CR0001")){
             jtfName.setText("Andrew Chong");
@@ -347,6 +377,61 @@ public class GenerateInvoice extends javax.swing.JFrame {
         jtfTotalAmount.setText("");
         jtfName.setText("");
         jtaAddress.setText("");
+    }
+    
+    private int selectedMonth(){
+        int selectedMonth = 1;
+        String month = jcbMonth.getSelectedItem().toString();
+        if(month.equals("January")){
+            selectedMonth = 1;
+        }
+        else if(month.equals("February")){
+            selectedMonth = 2;
+        }
+        else if(month.equals("March")){
+            selectedMonth = 3;
+        }
+        else if(month.equals("April")){
+            selectedMonth = 4;
+        }
+        else if(month.equals("May")){
+            selectedMonth = 5;
+        }
+        else if(month.equals("June")){
+            selectedMonth = 6;
+        }
+        else if(month.equals("July")){
+            selectedMonth = 7;
+        }
+        else if(month.equals("August")){
+            selectedMonth = 8;
+        }
+        else if(month.equals("September")){
+            selectedMonth = 9;
+        }
+        else if(month.equals("October")){
+            selectedMonth = 10;
+        }
+        else if(month.equals("November")){
+            selectedMonth = 11;
+        }
+        else if(month.equals("December")){
+            selectedMonth = 12;
+        }
+        return selectedMonth;
+    }
+    
+    private String nextMonth(){
+        String month = "1/2018";
+        int getMonth = selectedMonth();
+        if(getMonth == 1 || getMonth == 2 || getMonth == 3 || getMonth == 4 || getMonth == 5 || getMonth == 6 ||
+           getMonth == 7 || getMonth == 8 || getMonth == 9 || getMonth == 11){
+            getMonth = getMonth + 1;
+            month = getMonth + "/2018";
+        }else if(getMonth == 12){
+            month = "1/2019";
+        }
+        return month;
     }
     
     /**
