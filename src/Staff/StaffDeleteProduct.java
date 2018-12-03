@@ -48,9 +48,10 @@ public ArrayList ProductList(){
     ArrayList<Product> list = new ArrayList<Product>();
     Product p1 = new Product("P1001","Rose","Fresh Flowers","Collect on current day morning 100% pure and fresh",50.0,5,"none");
     Product p2 = new Product("P1002","Sun Flowers","Fresh Flowers","Collect on current day morning 100% pure and fresh",10.0,2,"none");
-    
+    Product p3 = new Product("P1003","Moon Flowers","Fresh Flowers","Collect on current day morning 100% pure and fresh",10.0,2,"none");
     list.add(p1);
     list.add(p2);
+    list.add(p3);
     return list;
 }
 public void StoreTable(){
@@ -439,22 +440,39 @@ public void StoreTable(){
     private void jbtRetrieveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtRetrieveActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) jtbProduct.getModel();
-       ArrayList<StaffDeleteProduct.Product> list = ProductList();
+        ArrayList<StaffDeleteProduct.Product> list = ProductList();
+        int index = selectedIndex();
        
-        for(int i =0;i< list.size();i++){
-        if(jtfProductID.getText().equals(list.get(i).id.toString())){
-            double p = list.get(i).price;
-            jtfProductName.setText(list.get(i).name);
-            jtfProductType.setText(list.get(i).productType);
-            jtaDesc.setText(list.get(i).productDesc);
+        if(index != -1){
+            double p = list.get(index).price;
+            jtfProductName.setText(list.get(index).name);
+            jtfProductType.setText(list.get(index).productType);
+            jtaDesc.setText(list.get(index).productDesc);
             jtfPrice.setText(Double.toString(p));
-            jtfQuan.setText(String.valueOf(list.get(i).quantity));
-            
-            
+            jtfQuan.setText(String.valueOf(list.get(index).quantity));
         }
-            }
+        else{
+            jtfProductID.setText("");
+                    jtfProductName.setText("");
+                    jtfProductType.setText("");
+                    jtaDesc.setText("");
+                    jtfPrice.setText("");
+                    jtfQuan.setText("");
+            JOptionPane.showMessageDialog(null,"Selected id does not exist","Error",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jbtRetrieveActionPerformed
 
+    public int selectedIndex(){
+        ArrayList<StaffDeleteProduct.Product> Arraylist = ProductList();
+        int index = -1;
+        
+        for(int i=0;i<Arraylist.size();i++){
+            if(jtfProductID.getText().equals(Arraylist.get(i).id.toString())){
+                index = i;
+            }
+        }
+        return index;
+    }
     /**
      * @param args the command line arguments
      */
